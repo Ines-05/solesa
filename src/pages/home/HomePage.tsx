@@ -67,7 +67,7 @@ export function HomePage() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/src/public/palais des congrès .png"
+            src="/palais des congrès .png"
             alt="Palais des Congrès de Cotonou"
             className="h-full w-full object-cover"
           />
