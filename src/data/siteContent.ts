@@ -53,7 +53,7 @@ export const newsItems = [
     category: 'Marché',
     title: 'Avis logistique pour la maintenance informatique et serveurs',
     excerpt: 'Publication d’un dossier de consultation pour soutenir la continuité des outils de supervision.',
-    date: '05 Tév 2026'
+    date: '05 Fév 2026'
   }
 ];
 

@@ -31,7 +31,7 @@ const thumbnailTones = ['bg-[#4ea6a3]', 'bg-[#f1efe7]'];
 
 export function HomePage() {
   const pageRef = useRef<HTMLDivElement>(null);
-  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   useGSAP(
     () => {
