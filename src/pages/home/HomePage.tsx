@@ -88,16 +88,16 @@ export function HomePage() {
             <p className="hero-text mt-6 max-w-lg text-[15px] leading-relaxed text-white/80 sm:text-[16px]">
               SoLE SA coordonne les dispositifs logistiques des manifestations officielles et accompagne les grands événements culturels et institutionnels du Bénin.
             </p>
-            <div className="hero-actions mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+            <div className="hero-actions mt-10 flex flex-col items-start gap-4 sm:flex-row sm:flex-wrap sm:items-center">
               <Link
                 to="/services"
-                className="inline-flex items-center justify-center rounded-full bg-sole-green px-8 py-4 text-[13px] font-bold text-white shadow-lg transition-transform hover:scale-105"
+                className="inline-flex items-center justify-center rounded-full bg-sole-green px-8 py-4 text-[13px] font-bold text-white shadow-lg transition-colors hover:bg-emerald-600"
               >
-                Decouvrir nos services
+                Découvrir nos services
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center rounded-full bg-white/10 px-8 py-4 text-[13px] font-bold text-white backdrop-blur-md border border-white/20 transition-all hover:bg-white/20"
+                className="inline-flex items-center justify-center rounded-full border-2 border-white/50 bg-transparent px-8 py-4 text-[13px] font-bold text-white backdrop-blur-md transition-colors hover:bg-white hover:text-[#012347]"
               >
                 Demander un accompagnement
               </Link>
