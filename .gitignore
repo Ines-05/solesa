@@ -27,5 +27,5 @@ coverage/
 *.bak
 *.backup
 *.docx
-.tmp_docx/
+*.tmp_docx/
 *.pdf  

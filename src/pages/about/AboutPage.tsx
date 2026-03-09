@@ -10,6 +10,7 @@
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import { ScrollReveal } from '../../components/animations/ScrollReveal';
 
 const missionCards = [
   {
@@ -52,21 +53,31 @@ export function AboutPage() {
       {/* Hero Section - Refined & Minimal */}
       <section className="relative overflow-hidden bg-[#012347] py-16 lg:py-20">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute -left-24 -top-24 h-96 w-96 rounded-full bg-sole-green blur-[120px]" />
-          <div className="absolute -right-24 -bottom-24 h-96 w-96 rounded-full bg-sole-blue blur-[120px]" />
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 0.1 }}
+            transition={{ duration: 2, ease: "easeOut" }}
+            className="absolute -left-24 -top-24 h-96 w-96 rounded-full bg-sole-green blur-[120px]"
+          />
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 0.1 }}
+            transition={{ duration: 2, ease: "easeOut", delay: 0.5 }}
+            className="absolute -right-24 -bottom-24 h-96 w-96 rounded-full bg-sole-blue blur-[120px]"
+          />
         </div>
-        
+
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, ease: [0.21, 0.45, 0.32, 0.9] }}
           >
             <span className="inline-block rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-sole-green backdrop-blur-sm">
               Notre Institution
             </span>
             <h1 className="mt-6 text-3xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl leading-[1.1]">
-              L'excellence au service <br className="hidden lg:block" /> 
+              L'excellence au service <br className="hidden lg:block" />
               <span className="text-sole-green underline decoration-white/20 underline-offset-8">de la République</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-300">
@@ -80,12 +91,17 @@ export function AboutPage() {
       <section className="py-24 sm:py-32 overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
-            <div className="space-y-10">
+            <ScrollReveal direction="right" className="space-y-10">
               <div>
                 <h2 className="text-3xl font-bold tracking-tight text-sole-blue sm:text-4xl">Qui sommes-nous ?</h2>
-                <div className="mt-6 h-1.5 w-20 bg-sole-green rounded-full" />
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: 80 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  className="mt-6 h-1.5 bg-sole-green rounded-full"
+                />
               </div>
-              
+
               <div className="space-y-6 text-lg leading-relaxed text-slate-600">
                 <p>
                   Créée sous l'implusion du Gouvernement, la SoLE SA est une société d'État dotée de l'autonomie financière, placée sous la tutelle du Ministère du Tourisme, de la Culture et des Arts.
@@ -96,31 +112,36 @@ export function AboutPage() {
               </div>
 
               <div className="grid grid-cols-2 gap-6 pt-6">
-                {values.map((v) => (
-                  <div key={v.title} className="flex items-center gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-slate-50 text-sole-green shadow-sm">
+                {values.map((v, i) => (
+                  <ScrollReveal key={v.title} delay={i * 0.1} direction="up" distance={20} className="flex items-center gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-slate-50 text-sole-green shadow-sm transition-transform hover:scale-110">
                       <v.icon className="text-xl" />
                     </div>
                     <span className="font-bold text-slate-800 text-[15px]">{v.title}</span>
-                  </div>
+                  </ScrollReveal>
                 ))}
               </div>
-            </div>
+            </ScrollReveal>
 
-            <div className="relative">
-              <div className="aspect-[4/5] overflow-hidden rounded-[40px] shadow-2xl relative z-10 border-8 border-white">
-                <img 
-                  src="/salle rouge.png" 
+            <ScrollReveal direction="left" className="relative">
+              <div className="aspect-[4/5] overflow-hidden rounded-[40px] shadow-2xl relative z-10 border-8 border-white group">
+                <img
+                  src="/salle rouge.png"
                   alt="Salle Rouge du Palais des Congrès de Cotonou"
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
-              <div className="absolute -bottom-10 -left-10 rounded-[32px] bg-sole-green p-10 text-white shadow-2xl z-20 hidden md:block border-4 border-white">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="absolute -bottom-10 -left-10 rounded-[32px] bg-sole-green p-10 text-white shadow-2xl z-20 hidden md:block border-4 border-white"
+              >
                 <p className="text-5xl font-black">100%</p>
                 <p className="mt-1 text-xs font-bold uppercase tracking-widest opacity-90 text-nowrap">Capital d'État</p>
-              </div>
+              </motion.div>
               <div className="absolute -top-12 -right-12 h-64 w-64 bg-slate-100 rounded-full -z-10" />
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -128,22 +149,27 @@ export function AboutPage() {
       {/* Missions - Modern Grid */}
       <section className="bg-slate-50 py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
+          <ScrollReveal direction="up" className="text-center mb-20">
             <h2 className="text-3xl font-bold tracking-tight text-sole-blue sm:text-5xl">Nos Missions</h2>
             <p className="mt-6 text-slate-500 max-w-2xl mx-auto text-lg leading-relaxed">Un mandat d'excellence pour le rayonnement du Bénin à l'échelle nationale et internationale.</p>
-          </div>
+          </ScrollReveal>
 
           <div className="grid gap-8 md:grid-cols-3">
-            {missionCards.map((card) => (
-              <div key={card.title} className="group relative rounded-[32px] border border-white bg-white p-10 shadow-sm transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl">
-                <div className={`mb-10 inline-flex h-16 w-16 items-center justify-center rounded-[20px] transition-transform duration-500 group-hover:scale-110 ${card.color}`}>
+            {missionCards.map((card, i) => (
+              <ScrollReveal
+                key={card.title}
+                direction="up"
+                delay={i * 0.15}
+                className="group relative rounded-[32px] border border-white bg-white p-10 shadow-sm transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl"
+              >
+                <div className={`mb-10 inline-flex h-16 w-16 items-center justify-center rounded-[20px] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6 ${card.color}`}>
                   <card.icon className="text-3xl" />
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 group-hover:text-sole-green transition-colors leading-tight">{card.title}</h3>
                 <p className="mt-6 text-slate-500 leading-relaxed">
                   {card.description}
                 </p>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -152,21 +178,22 @@ export function AboutPage() {
       {/* CTA Section - Compact Version */}
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-[40px] bg-[#012347] p-10 lg:p-16 text-center relative overflow-hidden shadow-xl">
+          <ScrollReveal direction="none" distance={0} className="rounded-[40px] bg-[#012347] p-10 lg:p-16 text-center relative overflow-hidden shadow-xl">
             <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-sole-green/5 to-transparent pointer-events-none" />
             <div className="relative z-10">
-              <h2 className="text-3xl font-black text-white sm:text-4xl leading-tight">Prêt à collaborer <br className="sm:hidden"/> avec nous ?</h2>
+              <h2 className="text-3xl font-black text-white sm:text-4xl leading-tight">Prêt à collaborer <br className="sm:hidden" /> avec nous ?</h2>
               <p className="mt-6 text-lg text-slate-400 max-w-xl mx-auto italic">Service d'ingénierie événementielle de référence au Bénin.</p>
               <div className="mt-10">
                 <Link to="/contact" className="group inline-flex items-center gap-3 rounded-full bg-sole-green px-8 py-4 text-sm font-bold text-white transition-all hover:bg-white hover:text-[#012347] hover:scale-105">
-                  Contactez notre équipe 
+                  Contactez notre équipe
                   <ArrowRightOutlined className="transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>
   );
 }
+
